@@ -1,7 +1,9 @@
 extends Sprite
 
+onready var ray = $RayCast2D
+
 var speed = 256
-var tile_size = 16
+var tile_size = 64
 
 var last_position = self.position
 var target_position = self.position
@@ -23,6 +25,8 @@ func get_movedir():
 	
 	if(movedir.x != 0 && movedir.y != 0):
 		movedir = Vector2(0, 0)
+	if(movedir != Vector2(0, 0)):
+		ray.cast_to = movedir * tile_size /2
 
 
 func _process(delta):
@@ -32,8 +36,11 @@ func _process(delta):
 		target_position += movedir * tile_size
 		
 	else:
-		position += speed * movedir * delta
-		var distance = (position - last_position).abs().length()
-		if(distance > tile_size - speed * delta):
-			position = target_position
+		if(ray.is_colliding()):
+			target_position = last_position
+		else:
+			position += speed * movedir * delta
+			var distance = (position - last_position).abs().length()
+			if(distance > tile_size - speed * delta):
+				position = target_position
 
