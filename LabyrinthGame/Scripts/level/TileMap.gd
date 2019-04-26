@@ -20,7 +20,7 @@ func _ready():
 		var rand = randf()*11+1		
 		# check if location is a designated to player, ai, or goal
 		if(gridSet[i] != playerLocation && gridSet[i] != aiLocation && gridSet[i] != goalLocation):
-			if(rand < 6):
+			if(rand < 7):
 				set_cellv(gridSet[i], 0)
 	
 	pass

@@ -8,6 +8,7 @@ var tile_size = 64
 var last_position = self.position
 var target_position = self.position
 var movedir = Vector2(0,0)
+var goalPosition = Vector2(64, 128)
 
 func _ready():
 	# Snaps player to the grid
@@ -37,20 +38,25 @@ func get_movedir():
 
 func _process(delta):
 	# records the current positon of the player when idle and checks what direction the player wants to move
-	if (position == target_position):
-		get_movedir()
-		last_position = position
-		target_position += movedir * tile_size
-		
-	else:
-		#if the player wants to move in a direction that has a wall, sets the position back to its last position
-		if(ray.is_colliding()):
-			target_position = last_position
+	if(self.position != goalPosition):
+		if (position == target_position):
+			get_movedir()
+			last_position = position
+			target_position += movedir * tile_size
 			
-		# otherwise move the player to the new location 
 		else:
-			position += speed * movedir * delta
-			var distance = (position - last_position).abs().length()
-			if(distance > tile_size - speed * delta):
-				position = target_position
+			#if the player wants to move in a direction that has a wall, sets the position back to its last position
+			if(ray.is_colliding()):
+				target_position = last_position
+				
+			# otherwise move the player to the new location 
+			else:
+				position += speed * movedir * delta
+				var distance = (position - last_position).abs().length()
+				if(distance > tile_size - speed * delta):
+					position = target_position
+	else:
+		var label = find_node("Label")
+		label.show()
+		
 
