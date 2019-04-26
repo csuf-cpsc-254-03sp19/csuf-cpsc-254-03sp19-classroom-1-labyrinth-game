@@ -1,57 +1,40 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://tileset.res" type="TileSet" id=1]
-[ext_resource path="res://Scripts/level/TileMap.gd" type="Script" id=2]
-[ext_resource path="res://images/icon.png" type="Texture" id=3]
-[ext_resource path="res://Scripts/player/player.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/level/testscene.gd" type="Script" id=1]
+[ext_resource path="res://tileset.res" type="TileSet" id=2]
+[ext_resource path="res://Scripts/level/TileMap.gd" type="Script" id=3]
+[ext_resource path="res://images/icon.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/player/player.gd" type="Script" id=5]
+[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=6]
 
-[node name="Node2D" type="Node2D" index="0"]
-
+[node name="Node2D" type="Node2D"]
+visible = false
 position = Vector2( 255.888, 192.379 )
+script = ExtResource( 1 )
 
-[node name="TileMap" type="TileMap" parent="." index="0"]
-
-mode = 0
-tile_set = ExtResource( 1 )
-cell_size = Vector2( 64, 64 )
-cell_quadrant_size = 16
-cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-cell_half_offset = 2
-cell_tile_origin = 0
-cell_y_sort = false
-cell_clip_uv = false
-collision_use_kinematic = false
-collision_friction = 1.0
-collision_bounce = 0.0
-collision_layer = 1
-collision_mask = 1
-occluder_light_mask = 1
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
 format = 1
 tile_data = PoolIntArray( -131076, 0, 0, -131075, 0, 0, -131074, 0, 0, -131073, 0, 0, -196608, 0, 0, -196607, 0, 0, -196606, 0, 0, -196605, 0, 0, -196604, 0, 0, -196603, 0, 0, -196602, 0, 0, -65540, 0, 0, -131066, 0, 0, -4, 0, 0, -65530, 0, 0, 65532, 0, 0, 6, 0, 0, 131068, 0, 0, 65542, 0, 0, 196604, 0, 0, 131078, 0, 0, 262140, 0, 0, 196614, 0, 0, 327676, 0, 0, 262150, 0, 0, 393212, 0, 0, 327686, 0, 0, 458748, 0, 0, 393222, 0, 0, 524284, 0, 0, 524285, 0, 0, 524286, 0, 0, 524287, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0 )
-script = ExtResource( 2 )
-_sections_unfolded = [ "Cell", "Transform" ]
+script = ExtResource( 3 )
 
-[node name="player" type="Sprite" parent="." index="1"]
-
+[node name="player" type="Sprite" parent="."]
 position = Vector2( -185.39, 374.121 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 centered = false
-script = ExtResource( 4 )
-_sections_unfolded = [ "Offset", "Transform" ]
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="RayCast2D" type="RayCast2D" parent="player" index="0"]
-
+[node name="RayCast2D" type="RayCast2D" parent="player"]
 position = Vector2( 32, 32 )
 enabled = true
-exclude_parent = true
-cast_to = Vector2( 0, 50 )
-collision_mask = 1
-_sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
 
+[node name="HUD" parent="player" instance=ExtResource( 6 )]
 
+[connection signal="start_game" from="player/HUD" to="." method="_on_HUD_start_game"]
+[connection signal="start_game" from="player/HUD" to="TileMap" method="_on_HUD_start_game"]

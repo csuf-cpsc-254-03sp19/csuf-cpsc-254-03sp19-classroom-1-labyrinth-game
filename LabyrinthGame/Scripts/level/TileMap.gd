@@ -24,3 +24,7 @@ func _ready():
 				set_cellv(gridSet[i], 0)
 	
 	pass
+
+
+func _on_HUD_start_game():
+	pass
