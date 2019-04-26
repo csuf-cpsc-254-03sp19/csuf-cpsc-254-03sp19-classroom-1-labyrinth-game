@@ -8,7 +8,6 @@
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=6]
 
 [node name="Node2D" type="Node2D"]
-visible = false
 position = Vector2( 255.888, 192.379 )
 script = ExtResource( 1 )
 
@@ -19,7 +18,7 @@ tile_data = PoolIntArray( -131076, 0, 0, -131075, 0, 0, -131074, 0, 0, -131073, 
 script = ExtResource( 3 )
 
 [node name="player" type="Sprite" parent="."]
-position = Vector2( -185.39, 374.121 )
+position = Vector2( -192.756, 382.715 )
 texture = ExtResource( 4 )
 centered = false
 script = ExtResource( 5 )
@@ -36,5 +35,8 @@ __meta__ = {
 
 [node name="HUD" parent="player" instance=ExtResource( 6 )]
 
+[connection signal="Shift_27_35" from="player/HUD" to="TileMap" method="_on_HUD_Shift_27_35"]
+[connection signal="Shift_45_53" from="player/HUD" to="TileMap" method="_on_HUD_Shift_45_53"]
+[connection signal="Shift_63_71" from="player/HUD" to="TileMap" method="_on_HUD_Shift_63_71"]
+[connection signal="Shift_9_17" from="player/HUD" to="TileMap" method="_on_HUD_Shift_9_17"]
 [connection signal="start_game" from="player/HUD" to="." method="_on_HUD_start_game"]
-[connection signal="start_game" from="player/HUD" to="TileMap" method="_on_HUD_start_game"]

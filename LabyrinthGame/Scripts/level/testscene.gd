@@ -6,7 +6,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	set_visible(false)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -15,3 +15,8 @@ func _ready():
 
 func _on_HUD_start_game():
 	set_visible(true)
+
+
+
+func _on_HUD_Shift_9_17():
+	pass # Replace with function body.

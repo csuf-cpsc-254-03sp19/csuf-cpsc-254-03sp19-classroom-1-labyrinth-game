@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/HUD/HUD.gd" type="Script" id=1]
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
@@ -9,6 +9,22 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 64
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 32
 font_data = ExtResource( 2 )
 
 [node name="HUD" type="CanvasLayer"]
@@ -32,4 +48,37 @@ margin_bottom = 39.0
 custom_fonts/font = SubResource( 2 )
 text = "Start the Game"
 
+[node name="Shift_63_71" type="Button" parent="."]
+margin_top = 512.0
+margin_right = 64.0
+margin_bottom = 576.0
+rect_pivot_offset = Vector2( -646.289, -403.73 )
+custom_fonts/font = SubResource( 3 )
+text = "->"
+
+[node name="Shift_45_53" type="Button" parent="."]
+margin_top = 384.0
+margin_right = 64.0
+margin_bottom = 448.0
+custom_fonts/font = SubResource( 4 )
+text = "->"
+
+[node name="Shift_27_35" type="Button" parent="."]
+margin_top = 256.0
+margin_right = 64.0
+margin_bottom = 320.0
+custom_fonts/font = SubResource( 5 )
+text = "->"
+
+[node name="Shift_9_17" type="Button" parent="."]
+margin_top = 128.0
+margin_right = 64.0
+margin_bottom = 192.0
+custom_fonts/font = SubResource( 6 )
+text = "->"
+
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="Shift_63_71" to="." method="_on_Shift_63_71_pressed"]
+[connection signal="pressed" from="Shift_45_53" to="." method="_on_Shift_45_53_pressed"]
+[connection signal="pressed" from="Shift_27_35" to="." method="_on_Shift_27_35_pressed"]
+[connection signal="pressed" from="Shift_9_17" to="." method="_on_Shift_9_17_pressed"]
