@@ -6,6 +6,8 @@
 [ext_resource path="res://images/icon.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/player/player.gd" type="Script" id=5]
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/DrawGrid.gd" type="Script" id=7]
+[ext_resource path="res://scenes/goal.gd" type="Script" id=8]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 255.888, 192.379 )
@@ -25,6 +27,7 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
 }
+
 
 [node name="RayCast2D" type="RayCast2D" parent="player"]
 position = Vector2( 32, 32 )
@@ -52,3 +55,27 @@ __meta__ = {
 [connection signal="Shift_71_63" from="player/HUD" to="TileMap" method="_on_HUD_Shift_71_63"]
 [connection signal="Shift_9_17" from="player/HUD" to="TileMap" method="_on_HUD_Shift_9_17"]
 [connection signal="start_game" from="player/HUD" to="." method="_on_HUD_start_game"]
+
+[node name="Node2D" type="Node2D" parent="TileMap"]
+script = ExtResource( 7 )
+
+[node name="goal" type="Sprite" parent="."]
+modulate = Color( 0.125, 1, 0, 1 )
+self_modulate = Color( 0.195313, 1, 0, 1 )
+position = Vector2( 95.8495, 159.316 )
+texture = ExtResource( 4 )
+centered = false
+script = ExtResource( 8 )
+
+
+[node name="Label" type="Label" parent="player"]
+visible = false
+margin_left = -99.0
+margin_top = -119.0
+margin_right = 159.0
+margin_bottom = 81.0
+size_flags_vertical = 2
+text = "YOU WIN!"
+align = 1
+valign = 1
+
