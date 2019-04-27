@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scripts/HUD/HUD.gd" type="Script" id=1]
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
-size = 64
+size = 50
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -24,6 +24,54 @@ size = 32
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=6]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=16]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=17]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=18]
 size = 32
 font_data = ExtResource( 2 )
 
@@ -77,8 +125,124 @@ margin_bottom = 192.0
 custom_fonts/font = SubResource( 6 )
 text = "->"
 
+[node name="Shift_17_9" type="Button" parent="."]
+margin_left = 640.0
+margin_top = 127.273
+margin_right = 704.0
+margin_bottom = 191.273
+custom_fonts/font = SubResource( 7 )
+text = "<-"
+
+[node name="Shift_35_27" type="Button" parent="."]
+margin_left = 640.0
+margin_top = 256.0
+margin_right = 704.0
+margin_bottom = 320.0
+custom_fonts/font = SubResource( 8 )
+text = "<-"
+
+[node name="Shift_53_45" type="Button" parent="."]
+margin_left = 640.0
+margin_top = 384.0
+margin_right = 704.0
+margin_bottom = 448.0
+custom_fonts/font = SubResource( 9 )
+text = "<-"
+
+[node name="Shift_71_63" type="Button" parent="."]
+margin_left = 640.0
+margin_top = 512.0
+margin_right = 704.0
+margin_bottom = 576.0
+custom_fonts/font = SubResource( 10 )
+text = "<-"
+
+[node name="ShiftDown1" type="Button" parent="."]
+margin_left = 128.0
+margin_top = 64.0
+margin_right = 192.0
+margin_bottom = 128.0
+rect_rotation = 270.0
+custom_fonts/font = SubResource( 11 )
+text = "<-"
+
+[node name="ShiftDown3" type="Button" parent="."]
+margin_left = 256.0
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 128.0
+rect_rotation = 270.0
+custom_fonts/font = SubResource( 12 )
+text = "<-"
+
+[node name="ShiftDown5" type="Button" parent="."]
+margin_left = 384.0
+margin_top = 64.0
+margin_right = 448.0
+margin_bottom = 128.0
+rect_rotation = 270.0
+custom_fonts/font = SubResource( 13 )
+text = "<-"
+
+[node name="ShiftDown7" type="Button" parent="."]
+margin_left = 512.0
+margin_top = 64.0
+margin_right = 576.0
+margin_bottom = 128.0
+rect_rotation = 270.0
+custom_fonts/font = SubResource( 14 )
+text = "<-"
+
+[node name="ShiftDownN1" type="Button" parent="."]
+margin_left = 192.0
+margin_top = 640.0
+margin_right = 256.0
+margin_bottom = 704.0
+rect_rotation = 90.0
+custom_fonts/font = SubResource( 15 )
+text = "<-"
+
+[node name="ShiftDownN3" type="Button" parent="."]
+margin_left = 320.0
+margin_top = 640.0
+margin_right = 384.0
+margin_bottom = 704.0
+rect_rotation = 90.0
+custom_fonts/font = SubResource( 16 )
+text = "<-"
+
+[node name="ShiftDownN5" type="Button" parent="."]
+margin_left = 448.0
+margin_top = 640.0
+margin_right = 512.0
+margin_bottom = 704.0
+rect_rotation = 90.0
+custom_fonts/font = SubResource( 17 )
+text = "<-"
+
+[node name="ShiftDownN7" type="Button" parent="."]
+margin_left = 576.0
+margin_top = 640.0
+margin_right = 640.0
+margin_bottom = 704.0
+rect_rotation = 90.0
+custom_fonts/font = SubResource( 18 )
+text = "<-"
+
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="Shift_63_71" to="." method="_on_Shift_63_71_pressed"]
 [connection signal="pressed" from="Shift_45_53" to="." method="_on_Shift_45_53_pressed"]
 [connection signal="pressed" from="Shift_27_35" to="." method="_on_Shift_27_35_pressed"]
 [connection signal="pressed" from="Shift_9_17" to="." method="_on_Shift_9_17_pressed"]
+[connection signal="pressed" from="Shift_17_9" to="." method="_on_Shift_17_9_pressed"]
+[connection signal="pressed" from="Shift_35_27" to="." method="_on_Shift_35_27_pressed"]
+[connection signal="pressed" from="Shift_53_45" to="." method="_on_Shift_53_45_pressed"]
+[connection signal="pressed" from="Shift_71_63" to="." method="_on_Shift_71_63_pressed"]
+[connection signal="pressed" from="ShiftDown1" to="." method="_on_ShiftDown1_pressed"]
+[connection signal="pressed" from="ShiftDown3" to="." method="_on_ShiftDown3_pressed"]
+[connection signal="pressed" from="ShiftDown5" to="." method="_on_ShiftDown5_pressed"]
+[connection signal="pressed" from="ShiftDown7" to="." method="_on_ShiftDown7_pressed"]
+[connection signal="pressed" from="ShiftDownN1" to="." method="_on_ShiftDownN1_pressed"]
+[connection signal="pressed" from="ShiftDownN3" to="." method="_on_ShiftDownN3_pressed"]
+[connection signal="pressed" from="ShiftDownN5" to="." method="_on_ShiftDownN5_pressed"]
+[connection signal="pressed" from="ShiftDownN7" to="." method="_on_ShiftDownN7_pressed"]

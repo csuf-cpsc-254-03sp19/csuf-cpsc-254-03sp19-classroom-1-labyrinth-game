@@ -59,6 +59,7 @@ func _process(delta):
 				var distance = (position - last_position).abs().length()
 				if(distance > tile_size - speed * delta):
 					position = target_position
+				get_node("HUD").show_message("")
 
 
 
