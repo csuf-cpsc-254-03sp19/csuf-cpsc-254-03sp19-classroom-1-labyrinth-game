@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/level/testscene.gd" type="Script" id=1]
 [ext_resource path="res://tileset.res" type="TileSet" id=2]
 [ext_resource path="res://Scripts/level/TileMap.gd" type="Script" id=3]
 [ext_resource path="res://scenes/DrawGrid.gd" type="Script" id=4]
 [ext_resource path="res://images/icon.png" type="Texture" id=5]
-[ext_resource path="res://Scripts/player/player.gd" type="Script" id=6]
-[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/goal.gd" type="Script" id=8]
+[ext_resource path="res://scenes/AI.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/player/player.gd" type="Script" id=7]
+[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/goal.gd" type="Script" id=9]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 255.888, 192.379 )
@@ -22,11 +23,18 @@ script = ExtResource( 3 )
 [node name="Node2D" type="Node2D" parent="TileMap"]
 script = ExtResource( 4 )
 
-[node name="player" type="Sprite" parent="."]
-position = Vector2( -192.756, 382.715 )
+[node name="AI" type="Sprite" parent="TileMap"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 321.913, -121.3 )
 texture = ExtResource( 5 )
 centered = false
 script = ExtResource( 6 )
+
+[node name="player" type="Sprite" parent="."]
+position = Vector2( -194.01, 384.133 )
+texture = ExtResource( 5 )
+centered = false
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -38,7 +46,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="HUD" parent="player" instance=ExtResource( 7 )]
+[node name="HUD" parent="player" instance=ExtResource( 8 )]
 
 [node name="Label" type="Label" parent="player"]
 visible = false
@@ -57,8 +65,7 @@ self_modulate = Color( 0.195313, 1, 0, 1 )
 position = Vector2( 95.8495, 159.316 )
 texture = ExtResource( 5 )
 centered = false
-script = ExtResource( 8 )
-
+script = ExtResource( 9 )
 [connection signal="ShiftDown1" from="player/HUD" to="TileMap" method="_on_HUD_ShiftDown1"]
 [connection signal="ShiftDown3" from="player/HUD" to="TileMap" method="_on_HUD_ShiftDown3"]
 [connection signal="ShiftDown5" from="player/HUD" to="TileMap" method="_on_HUD_ShiftDown5"]
