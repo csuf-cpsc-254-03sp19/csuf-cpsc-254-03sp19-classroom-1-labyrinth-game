@@ -31,12 +31,30 @@ func _ready():
 	
 	pass
 
+#func getGrid():
+#	var grid = AStar.new()
+#	var id = 0
+#	for i in range(len(gridSet)):
+#		if(get_cellv(gridSet[i]) != 0):
+#			grid.add_point(id, Vector3(gridSet[i].x, gridSet[i].y, 0), 1)
+#			id = id + 1
+#	grid.add_point(id, Vector3(aiLocation.x, aiLocation.y, 0), 1)
+#	var points = grid.get_points()
+#
+#	for point in points:
+#		for otherPoint in points:
+#			if(grid.get_point_position(point).distance_squared_to(grid.get_point_position(otherPoint)) == 1):
+#				grid.connect_points(point, otherPoint)
+#	return grid
 func getGrid():
 	var grid = AStar.new()
 	var id = 0
-	for i in range(len(gridSet)):
+	for i in range (len(gridSet)):
 		if(get_cellv(gridSet[i]) != 0):
 			grid.add_point(id, Vector3(gridSet[i].x, gridSet[i].y, 0), 1)
+			id = id + 1
+		else:
+			grid.add_point(id, Vector3(gridSet[i].x, gridSet[i].y, 0), 999)
 			id = id + 1
 	grid.add_point(id, Vector3(aiLocation.x, aiLocation.y, 0), 1)
 	var points = grid.get_points()
@@ -45,6 +63,7 @@ func getGrid():
 		for otherPoint in points:
 			if(grid.get_point_position(point).distance_squared_to(grid.get_point_position(otherPoint)) == 1):
 				grid.connect_points(point, otherPoint)
+				
 	return grid
 
 #converts the game Position to the approtiative grid position

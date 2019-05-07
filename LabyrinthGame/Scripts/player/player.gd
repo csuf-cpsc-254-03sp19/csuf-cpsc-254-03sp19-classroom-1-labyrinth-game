@@ -42,36 +42,38 @@ func convert_pos(position):
 	return Vector2(position.x/64, position.y/64)
 
 func _process(delta):
-	if (convert_pos(position) == GoalLocation):
-		$HUD.show_message("You won!")
-	else:
-		if (GameState.playerShift == true):
-			$HUD.disableButtons()
-			GameState.playerShift = false
-			GameState.playerMove = true
-		if (GameState.playerMove == true):
-			# records the current positon of the player when idle and checks what direction the player wants to move
-			if (position == target_position):
-				get_movedir()
-				last_position = position
-				target_position += movedir * tile_size
-			else:
-				#if the player wants to move in a direction that has a wall, sets the position back to its last position
-				if(ray.is_colliding()):
-					target_position = last_position
-					GameState.playerMove = false
-					$HUD.enableButtons()
-				# otherwise move the player to the new location 
+	if(!GameState.playerWin && !GameState.aiWin):
+		if (convert_pos(position) == GoalLocation):
+			GameState.playerWin = true
+			$HUD.show_message("You won!")
+		else:
+			if (GameState.playerShift == true):
+				$HUD.disableButtons()
+				GameState.playerShift = false
+				GameState.playerMove = true
+			if (GameState.playerMove == true):
+				# records the current positon of the player when idle and checks what direction the player wants to move
+				if (position == target_position):
+					get_movedir()
+					last_position = position
+					target_position += movedir * tile_size
 				else:
-					position += speed * movedir * delta
-					var distance = (position - last_position).abs().length()
-					if(distance > tile_size - speed * delta):
-						position = target_position
+					#if the player wants to move in a direction that has a wall, sets the position back to its last position
+					if(ray.is_colliding()):
+						target_position = last_position
 						GameState.playerMove = false
-						GameState.aiMove = true
 						$HUD.enableButtons()
-						
-					get_node("HUD").show_message("")
+					# otherwise move the player to the new location 
+					else:
+						position += speed * movedir * delta
+						var distance = (position - last_position).abs().length()
+						if(distance > tile_size - speed * delta):
+							position = target_position
+							GameState.playerMove = false
+							GameState.aiShift = true
+							$HUD.enableButtons()
+							
+						get_node("HUD").show_message("")
 
 func buttonClicked():
 	GameState.playerShift = true
