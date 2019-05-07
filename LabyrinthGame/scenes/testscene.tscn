@@ -3,12 +3,12 @@
 [ext_resource path="res://Scripts/level/testscene.gd" type="Script" id=1]
 [ext_resource path="res://tileset.res" type="TileSet" id=2]
 [ext_resource path="res://Scripts/level/TileMap.gd" type="Script" id=3]
-[ext_resource path="res://scenes/DrawGrid.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/HUD/DrawGrid.gd" type="Script" id=4]
 [ext_resource path="res://images/icon.png" type="Texture" id=5]
-[ext_resource path="res://scenes/AI.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/ai/AI.gd" type="Script" id=6]
 [ext_resource path="res://Scripts/player/player.gd" type="Script" id=7]
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/goal.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/level/goal.gd" type="Script" id=9]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 255.888, 192.379 )
