@@ -46,6 +46,8 @@ func _process(delta):
 		if (convert_pos(position) == GoalLocation):
 			GameState.playerWin = true
 			$HUD.show_message("You won!")
+			get_node("/root/Node2D/wingoal").visible = true
+			get_node("/root/Node2D/goal").visible = false
 		else:
 			if (GameState.playerShift == true):
 				$HUD.disableButtons()

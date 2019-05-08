@@ -15,9 +15,10 @@ _global_script_class_icons={
 
 [application]
 
-config/name="New Game Project"
+config/name="Labyrinth game"
 run/main_scene="res://scenes/TitleScreen.tscn"
 config/icon="res://icon.png"
+run/name="Labyrinth game"
 
 [autoload]
 

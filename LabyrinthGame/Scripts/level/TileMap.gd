@@ -99,7 +99,12 @@ func shift_helper_horizontal(start,end):
 		get_node("/root/Node2D/player/HUD").show_message("Don't try killin' me!")
 		for i in range (0,81):
 			set_cellv(gridSet[i],restoreSet[i])
-	
+	if(get_cellv(convert_pos(get_node("/root/Node2D/TileMap/AI").position)) == 0):
+		get_node("/root/Node2D/player/HUD").show_message("Don't try killin' me!")
+		for i in range (0,81):
+			set_cellv(gridSet[i],restoreSet[i])
+
+
 	
 #This function realizes the random tile shift
 func random_shift():
@@ -191,6 +196,10 @@ func shift_helper_vertical(column):
 	
 	#If a plate was shifted on the player, it will be revoked and a warning message will be send out
 	if(get_cellv(convert_pos(get_node("/root/Node2D/player").position)) == 0):
+		get_node("/root/Node2D/player/HUD").show_message("Don't try killin' me!")
+		for i in range (0,81):
+			set_cellv(gridSet[i],restoreSet[i])
+	if(get_cellv(convert_pos(get_node("/root/Node2D/TileMap/AI").position)) == 0):
 		get_node("/root/Node2D/player/HUD").show_message("Don't try killin' me!")
 		for i in range (0,81):
 			set_cellv(gridSet[i],restoreSet[i])
