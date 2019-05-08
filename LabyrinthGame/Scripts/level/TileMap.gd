@@ -7,10 +7,6 @@ var goalLocation = Vector2(1, 2)
 
 func _ready():
 	
-	# populate gridSet with vectors that represent each cell in the playfield
-	#for i in range(-3, 6):      # for some reason the 0,0 location is in the middle of the playfield so the 
-	#	for j in range(-2, 7):   # y //top left area of the grid is located at (-3,-2)
-	#		gridSet.append(Vector2(i, j))
 	
 	# (Switched x and y to ensure right counting) populate gridSet with vectors that represent each cell in the playfield
 	for i in range(-2, 7):      # for some reason the 0,0 location is in the middle of the playfield so the 
@@ -26,7 +22,8 @@ func _ready():
 		var rand = randf()*11+1		
 		# check if location is a designated to player, ai, or goal
 		if(gridSet[i] != playerLocation && gridSet[i] != aiLocation && gridSet[i] != goalLocation):
-			if(rand < 4):
+			#Based on a random number, set the tile to black (not usable) or white
+			if(rand < 6):
 				set_cellv(gridSet[i], 0)
 	
 	pass
@@ -103,6 +100,43 @@ func shift_helper_horizontal(start,end):
 		for i in range (0,81):
 			set_cellv(gridSet[i],restoreSet[i])
 	
+	
+#This function realizes the random tile shift
+func random_shift():
+	var rando = range(1,16)[randi()%range(1,16).size()]
+	if (rando == 1):
+		_on_HUD_Shift_63_71()
+	if (rando == 2):
+		_on_HUD_Shift_45_53()
+	if (rando == 3):
+		_on_HUD_Shift_27_35()
+	if (rando == 4):
+		_on_HUD_Shift_9_17()
+	if (rando == 5):
+		_on_HUD_Shift_17_9()
+	if (rando == 6):
+		_on_HUD_Shift_35_27()
+	if (rando == 7):
+		_on_HUD_Shift_53_45()
+	if (rando == 8):
+		_on_HUD_Shift_71_63()
+	if (rando == 9):
+		_on_HUD_ShiftDown1()
+	if (rando == 10):
+		_on_HUD_ShiftDown3()
+	if (rando == 11):
+		_on_HUD_ShiftDown5()
+	if (rando == 12):
+		_on_HUD_ShiftDown7()
+	if (rando == 13):
+		_on_HUD_ShiftDownN1()
+	if (rando == 14):
+		_on_HUD_ShiftDownN3()
+	if (rando == 15):
+		_on_HUD_ShiftDownN5()
+	if (rando == 16):
+		_on_HUD_ShiftDownN7()
+
 #implementing Shifting
 func _on_HUD_Shift_63_71():
 	shift_helper_horizontal(63,71)

@@ -24,7 +24,7 @@ func _ready():
 
 
 func _process(delta):
-	if(!GameState.playerWin && !GameState.aiWin):
+	if(!GameState.playerWin && !GameState.aiWin and get_node("/root/Node2D/player").position/64 != GoalLocation):
 		if(GameState.playing):
 			if(GameState.aiShift):
 				graph = get_parent().getGrid()
@@ -67,7 +67,11 @@ func _process(delta):
 				print(GoalLocation)
 				if(position/64 == GoalLocation):
 					GameState.aiWin = true
+					get_node("/root/Node2D/player/HUD").show_message("You loose!")
+				else:
+					get_node("/root/Node2D/TileMap").random_shift()
 					#show message for AI winning
+					
 	pass
 
 
