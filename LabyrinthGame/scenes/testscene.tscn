@@ -12,7 +12,9 @@
 [ext_resource path="res://images/closed_chest.png" type="Texture" id=10]
 [ext_resource path="res://Scripts/level/goal.gd" type="Script" id=11]
 [ext_resource path="res://images/open_chest.png" type="Texture" id=12]
-[ext_resource path="res://scenes/wingoal.gd" type="Script" id=13]
+[ext_resource path="res://Scripts/level/wingoal.gd" type="Script" id=13]
+
+
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 255.888, 192.379 )

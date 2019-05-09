@@ -37,12 +37,10 @@ func _process(delta):
 						goalID = point
 				path = graph.get_id_path(aiID, goalID)
 				if(graph.get_point_weight_scale(path[1]) > 1):
-					#if there are walls in the way shift walls near the AI
 					GameState.aiShift = false
 					GameState.aiMove = true
 					pass
 				else:
-					#if there are no walls in the way shift wall near player
 					GameState.aiShift = false
 					GameState.aiMove = true
 					pass

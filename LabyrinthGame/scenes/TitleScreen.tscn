@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/level/TitleScreen.gd" type="Script" id=1]
-[ext_resource path="res://title_screen/bg.png" type="Texture" id=2]
-[ext_resource path="res://title_screen/logo.PNG" type="Texture" id=3]
-[ext_resource path="res://title_screen/intro.PNG" type="Texture" id=4]
-[ext_resource path="res://title_screen/Button.PNG" type="Texture" id=5]
-[ext_resource path="res://title_screen/startButton.PNG" type="Texture" id=6]
+[ext_resource path="res://images/title_screen/bg.png" type="Texture" id=2]
+[ext_resource path="res://images/title_screen/logo.PNG" type="Texture" id=3]
+[ext_resource path="res://images/title_screen/intro.PNG" type="Texture" id=4]
+[ext_resource path="res://images/title_screen/Button.PNG" type="Texture" id=5]
+[ext_resource path="res://images/title_screen/startButton.PNG" type="Texture" id=6]
 
 [node name="TitleScreen" type="Node"]
 script = ExtResource( 1 )
