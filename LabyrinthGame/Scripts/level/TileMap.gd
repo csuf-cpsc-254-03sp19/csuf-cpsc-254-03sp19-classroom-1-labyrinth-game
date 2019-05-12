@@ -28,21 +28,6 @@ func _ready():
 	
 	pass
 
-#func getGrid():
-#	var grid = AStar.new()
-#	var id = 0
-#	for i in range(len(gridSet)):
-#		if(get_cellv(gridSet[i]) != 0):
-#			grid.add_point(id, Vector3(gridSet[i].x, gridSet[i].y, 0), 1)
-#			id = id + 1
-#	grid.add_point(id, Vector3(aiLocation.x, aiLocation.y, 0), 1)
-#	var points = grid.get_points()
-#
-#	for point in points:
-#		for otherPoint in points:
-#			if(grid.get_point_position(point).distance_squared_to(grid.get_point_position(otherPoint)) == 1):
-#				grid.connect_points(point, otherPoint)
-#	return grid
 func getGrid():
 	var grid = AStar.new()
 	var id = 0
@@ -63,12 +48,13 @@ func getGrid():
 				
 	return grid
 
-#converts the game Position to the approtiative grid position
+#converts the game Position to the approtiative grid position (scaled by 64)
 func convert_pos(position):
 	return Vector2(position.x/64, position.y/64)
 	
 #performs the grid movement based on the input.
 func shift_helper_horizontal(start,end):
+	#Erasing messages, which may appeard in prior rounds. 
 	get_node("/root/Node2D/player/HUD").show_message("")
 	#Store actual grid plan in case of shifting a plate ON the player, what is not allowed
 	var restoreSet = []
@@ -77,7 +63,7 @@ func shift_helper_horizontal(start,end):
 	
 	#perform grid movement
 	if (end > start):
-		#Left to rigth
+		#Left to rigth shift
 		var tempSet = []
 		for x in range (start,end+1):
 			tempSet.append(get_cellv(gridSet[x]))
@@ -85,9 +71,9 @@ func shift_helper_horizontal(start,end):
 			set_cellv(gridSet[x],tempSet[x-(start+1)])
 		set_cellv(gridSet[start],tempSet[8])
 	else:
-		var tempSet = []
+		#Right to left shift
 		#Note: Start might be 17 and end might be lower, e.g. 9
-		#Right to left
+		var tempSet = []
 		for x in range (end,start+1):
 			tempSet.append(get_cellv(gridSet[x]))
 		for x in range (end,start):
@@ -99,7 +85,8 @@ func shift_helper_horizontal(start,end):
 		get_node("/root/Node2D/player/HUD").show_message("Don't try killin' me!")
 		for i in range (0,81):
 			set_cellv(gridSet[i],restoreSet[i])
-		
+	
+	#Same thing for the AI.
 	if(get_cellv(convert_pos(get_node("/root/Node2D/TileMap/AI").position)) == 0):
 		get_node("/root/Node2D/player/HUD").show_message("Don't try killin' me!")
 		for i in range (0,81):
@@ -109,6 +96,7 @@ func shift_helper_horizontal(start,end):
 	
 #This function realizes the random tile shift
 func random_shift():
+	#Because GDScript doesn't support case-functions, we use multiple if functions instead.
 	var rando = range(1,16)[randi()%range(1,16).size()]
 	if (rando == 1):
 		_on_HUD_Shift_63_71()
@@ -143,7 +131,8 @@ func random_shift():
 	if (rando == 16):
 		_on_HUD_ShiftDownN7()
 
-#implementing Shifting
+#Implementing Shifting
+#Every function just redirects on the main helper function with the first and last tile to shift
 func _on_HUD_Shift_63_71():
 	shift_helper_horizontal(63,71)
 
@@ -178,6 +167,7 @@ func shift_helper_vertical(column):
 	#perform grid movement
 	if (column > 0):
 		#Perform grid down movement
+		#Each tile which shall be moved is a multiple of 9 (due to the kind of counting used here)
 		var tempSet = []
 		for i in range(column,(81+column),9):
 			tempSet.append(get_cellv(gridSet[i]))
@@ -200,12 +190,14 @@ func shift_helper_vertical(column):
 		get_node("/root/Node2D/player/HUD").show_message("Don't try killin' me!")
 		for i in range (0,81):
 			set_cellv(gridSet[i],restoreSet[i])
+	#Same for the AI
 	if(get_cellv(convert_pos(get_node("/root/Node2D/TileMap/AI").position)) == 0):
 		get_node("/root/Node2D/player/HUD").show_message("Don't try killin' me!")
 		for i in range (0,81):
 			set_cellv(gridSet[i],restoreSet[i])
 	pass
-	
+
+#For the vertical shifting, we submit the count of the column.
 func _on_HUD_ShiftDown1():
 	shift_helper_vertical(1)
 

@@ -228,6 +228,7 @@ margin_bottom = 704.0
 rect_rotation = 90.0
 custom_fonts/font = SubResource( 18 )
 text = "<-"
+
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="Shift_63_71" to="." method="_on_Shift_63_71_pressed"]
 [connection signal="pressed" from="Shift_45_53" to="." method="_on_Shift_45_53_pressed"]

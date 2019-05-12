@@ -1,8 +1,6 @@
 extends CanvasLayer
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+#The signals below are used to emit the button click to the underlying function in the TileMap Script
 signal start_game
 signal Shift_63_71
 signal Shift_45_53
@@ -31,26 +29,26 @@ func _on_Shift_63_71_pressed():
 	self.get_parent().buttonClicked()
 	emit_signal("Shift_63_71")
 
+#When a message should appear, this function will process it (It will set the value and the visibility)
 func show_message(text):
     $MessageLabel.text = text
     $MessageLabel.show()
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	#Nothing to do here.
+	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
+#For some parts, we want to pretend the user from shifting the buttons. This is realised here.
 func disableButtons():
 	set_block_signals(true)
 	pass
-	
+#...and we want to enable the buttons too.
 func enableButtons():
 	set_block_signals(false)
 	pass
 
+#The Shift Button emit's.
 func _on_Shift_45_53_pressed():
 	self.get_parent().buttonClicked()
 	emit_signal("Shift_45_53")

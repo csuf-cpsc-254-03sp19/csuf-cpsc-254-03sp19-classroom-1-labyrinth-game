@@ -37,12 +37,14 @@ func get_movedir():
 	if(movedir != Vector2(0, 0)):
 		ray.cast_to = movedir * tile_size /2
 		
-
+#Converts the Grid position into the 64pixel based
 func convert_pos(position):
 	return Vector2(position.x/64, position.y/64)
 
+#This functions is executed each timeframe.
 func _process(delta):
 	if(!GameState.playerWin && !GameState.aiWin):
+		#Ensure, that the win screen appears, when the player wins.
 		if (convert_pos(position) == GoalLocation):
 			GameState.playerWin = true
 			$HUD.show_message("You won!")
@@ -75,6 +77,7 @@ func _process(delta):
 							GameState.aiShift = true
 							$HUD.enableButtons()
 							
+						#Delete's a "Don't try killin' me!" message, which may could appear.
 						get_node("HUD").show_message("")
 
 func buttonClicked():
