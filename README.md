@@ -1,5 +1,5 @@
 This application is a light labyrinth game providing a single player mode against a AI.
-You can start the game just by launching the approtiative application for your operating machine in the ./Builds directory.
+You can start the game just by launching the approtiative application for your operating machine in the ./Builds directory.  
 IMPORTANT: You may have to provide the right of execution, for this, rightclick the `Labyrinth.x86_64` file and select properties. Here switch to Permissions and check `Allow exectuing file as program.` (Or use the command for the command line.)
 
 When you want to contribute, you have to download the godot-Engine here:
