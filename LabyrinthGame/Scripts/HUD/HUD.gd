@@ -19,7 +19,7 @@ signal ShiftDownN3
 signal ShiftDownN5
 signal ShiftDownN7
 
-
+#Sets the game state of playing to true signaling the game has started, Also hides the start button 
 func _on_StartButton_pressed():
 	$StartButton.hide()
 	GameState.playing = true

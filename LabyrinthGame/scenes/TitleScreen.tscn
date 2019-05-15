@@ -53,5 +53,4 @@ margin_bottom = 99.0
 size_flags_horizontal = 4
 texture_normal = ExtResource( 5 )
 texture_hover = ExtResource( 6 )
-
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/TextureButton" to="." method="_on_TextureButton_pressed"]
