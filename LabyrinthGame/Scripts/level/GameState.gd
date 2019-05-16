@@ -1,3 +1,5 @@
+# This script serves as a singleton to keep track of what state the game is in
+
 extends Node
 
 var playing = false

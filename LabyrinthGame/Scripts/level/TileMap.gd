@@ -28,10 +28,13 @@ func _ready():
 	
 	pass
 
+#Function to create the grid as an AStar used for AI pathing
 func getGrid():
 	var grid = AStar.new()
 	var id = 0
+	#For loop to add all points int the grid to the Astar
 	for i in range (len(gridSet)):
+		#If the cell is open sets the weight to 1, if it is a wall sets it to 999
 		if(get_cellv(gridSet[i]) != 0):
 			grid.add_point(id, Vector3(gridSet[i].x, gridSet[i].y, 0), 1)
 			id = id + 1
@@ -41,6 +44,7 @@ func getGrid():
 	grid.add_point(id, Vector3(aiLocation.x, aiLocation.y, 0), 1)
 	var points = grid.get_points()
 	
+	#For loop to connect adjacent points
 	for point in points:
 		for otherPoint in points:
 			if(grid.get_point_position(point).distance_squared_to(grid.get_point_position(otherPoint)) == 1):
